@@ -14,13 +14,7 @@ macro bind(def, element)
 end
 
 # ╔═╡ 1bedadd2-9738-11eb-2036-2fb99eef221c
-begin
-	using Pkg
-	Pkg.activate(mktempdir())
-	Pkg.add([Pkg.PackageSpec(name="PlutoUI",version="0.7"),
-			Pkg.PackageSpec(name="Plots"),])
-	using PlutoUI, Plots
-end
+using PlutoUI, Plots
 
 # ╔═╡ e43df1dc-9735-11eb-2361-8dbf881cd29d
 md"## The Forward Euler Method"
@@ -47,9 +41,9 @@ At each following step, we discard the (unknown) ``O(\Delta t^2)`` terms:
 ```math
 \begin{align*}
 x[1 \Delta t] &= x_0 + f(x_0) \Delta t\\
-x[2 \Delta t] &= x[1 \Delta t] + f(x[1 \Delta t]) \Delta t + O(\Delta t^2)\\
+x[2 \Delta t] &= x[1 \Delta t] + f(x[1 \Delta t]) \Delta t\\
 \vdots &= \vdots\\
-x[(n+1) \Delta t] &= x[n \Delta t] + f(x[n \Delta t]) \Delta t + O(\Delta t^2)\\
+x[(n+1) \Delta t] &= x[n \Delta t] + f(x[n \Delta t]) \Delta t\\
 \end{align*}
 ```
 
@@ -165,7 +159,7 @@ md"""
 
 We approximate 
 ```math
-\frac{d}{d x} \sin(t) \approx \frac{\sin(t + \Delta t) - \sin(t)}{\Delta t}
+\frac{d}{d t} \sin(t) \approx \frac{\sin(t + \Delta t) - \sin(t)}{\Delta t}
 ```
 and plot the deviation from the true derivative ``cos(t)``.
 ```math
