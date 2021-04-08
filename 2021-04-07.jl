@@ -14,7 +14,14 @@ macro bind(def, element)
 end
 
 # ╔═╡ 1bedadd2-9738-11eb-2036-2fb99eef221c
-using PlutoUI, Plots
+begin
+	using Pkg
+	Pkg.activate(mktempdir())
+	Pkg.add([Pkg.PackageSpec(name="PlutoUI",version="0.7"),
+		 Pkg.PackageSpec(name="Plots"),])
+	using PlutoUI, Plots
+end
+
 
 # ╔═╡ e43df1dc-9735-11eb-2361-8dbf881cd29d
 md"## The Forward Euler Method"
@@ -280,7 +287,7 @@ let
 end
 
 # ╔═╡ Cell order:
-# ╟─1bedadd2-9738-11eb-2036-2fb99eef221c
+# ╠═1bedadd2-9738-11eb-2036-2fb99eef221c
 # ╟─e43df1dc-9735-11eb-2361-8dbf881cd29d
 # ╟─afac1ac4-97ef-11eb-1521-e36237bb6988
 # ╟─6dd49d18-982d-11eb-3a78-8bb79e6cd97a
